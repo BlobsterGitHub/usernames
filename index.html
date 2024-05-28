@@ -48,9 +48,17 @@
             font-size: 20px;
             color: lightblue;
             text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
         .main-link:hover {
             text-decoration: underline;
+        }
+        .fade-in {
+            opacity: 1;
+        }
+        .fade-out {
+            opacity: 0;
         }
     </style>
 </head>
@@ -81,14 +89,17 @@
                 if (validateUsername(value)) {
                     message.textContent = 'This username would be accepted.';
                     message.style.color = 'lightgreen';
-                    quizLink.style.display = 'block';
+                    quizLink.classList.remove('fade-out');
+                    quizLink.classList.add('fade-in');
                 } else {
                     message.textContent = 'This username would not be accepted. Usernames should be 1-32 characters long, containing only lowercase letters, numbers, underscores, and dots. Double dots are not allowed.';
                     message.style.color = 'red';
-                    quizLink.style.display = 'none';
+                    quizLink.classList.remove('fade-in');
+                    quizLink.classList.add('fade-out');
                 }
             });
         });
     </script>
 </body>
 </html>
+
