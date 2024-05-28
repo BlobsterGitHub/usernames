@@ -61,13 +61,14 @@
         <label for="discordUsername">Enter your Discord username:</label>
         <input type="text" id="discordUsername" placeholder="Discord user - Do not use a display name" maxlength="32">
         <p class="message" id="message"></p>
-        <a href="main_page.html" class="main-link">Continue to the quiz...</a>
+        <a href="https://blobstergithub.github.io/Main/" class="main-link" id="quiz-link">Go back to the quiz...</a>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const discordUsernameInput = document.getElementById('discordUsername');
             const message = document.getElementById('message');
+            const quizLink = document.getElementById('quiz-link');
 
             // Function to validate the username
             const validateUsername = (username) => {
@@ -80,9 +81,11 @@
                 if (validateUsername(value)) {
                     message.textContent = 'This username would be accepted.';
                     message.style.color = 'lightgreen';
+                    quizLink.style.display = 'block';
                 } else {
                     message.textContent = 'This username would not be accepted. Usernames should be 1-32 characters long, containing only lowercase letters, numbers, underscores, and dots. Double dots are not allowed.';
                     message.style.color = 'red';
+                    quizLink.style.display = 'none';
                 }
             });
         });
