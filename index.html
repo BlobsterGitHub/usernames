@@ -92,10 +92,15 @@
                     quizLink.classList.remove('fade-out');
                     quizLink.classList.add('fade-in');
                 } else {
-                    message.textContent = 'This username would not be accepted. \nUsernames should be:\n\n - 1-32 characters long. \n- containing only lowercase letters, numbers\n - underscores, and dots\n\n - Double dots are not allowed.';
-                    message.style.color = 'red';
-                    quizLink.classList.remove('fade-in');
-                    quizLink.classList.add('fade-out');
+    message.textContent = 'This username would not be accepted.';
+    message.style.color = 'red';
+    message.textContent += '\nPlease choose a different username.';
+    message.textContent += '\n Accepted usernames would not include:.';
+    message.textContent += '\nCapitals, Only "_" and "." for special characters and between 1 - 32 letters.';
+    message.textContent += '\nDouble periods are not allowed EG: ".."';
+    quizLink.classList.remove('fade-in');
+    quizLink.classList.add('fade-out');
+}
                 }
             });
         });
