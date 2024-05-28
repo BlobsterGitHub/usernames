@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Username Validator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: linear-gradient(to bottom, #0d1117, #172659);
+            color: white;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            background-image: linear-gradient(to bottom, #0d1117, #172659);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.5s ease;
+            opacity: 1;
+            outline: 1px solid white;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+        .message {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .main-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 20px;
+            color: lightblue;
+            text-decoration: none;
+        }
+        .main-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discord Username Validator</h1>
+        <p>Please enter your Discord username to check if it would be accepted:</p>
+        <label for="discordUsername">Enter your Discord username:</label>
+        <input type="text" id="discordUsername" placeholder="Discord user - Do not use a display name" maxlength="32">
+        <p class="message" id="message"></p>
+        <a href="main_page.html" class="main-link">Continue to the quiz...</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const discordUsernameInput = document.getElementById('discordUsername');
+            const message = document.getElementById('message');
+
+            // Function to validate the username
+            const validateUsername = (username) => {
+                const regex = /^(?!.*\.\.)[a-z0-9._]{1,32}$/;
+                return regex.test(username);
+            };
+
+            discordUsernameInput.addEventListener('input', () => {
+                const value = discordUsernameInput.value.trim();
+                if (validateUsername(value)) {
+                    message.textContent = 'This username would be accepted.';
+                    message.style.color = 'lightgreen';
+                } else {
+                    message.textContent = 'This username would not be accepted. Usernames should be 1-32 characters long, containing only lowercase letters, numbers, underscores, and dots. Double dots are not allowed.';
+                    message.style.color = 'red';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
