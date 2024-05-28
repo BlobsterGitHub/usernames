@@ -14,7 +14,6 @@
             background-image: linear-gradient(to bottom, #0d1117, #172659);
             color: white;
             font-family: Arial, sans-serif;
-            position: relative;
         }
         .container {
             text-align: center;
@@ -22,12 +21,7 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             transition: opacity 0.5s ease;
-            opacity: 1;
             outline: 1px solid white;
         }
         input[type="text"] {
@@ -92,19 +86,17 @@
                     quizLink.classList.remove('fade-out');
                     quizLink.classList.add('fade-in');
                 } else {
-    message.textContent = 'This username would not be accepted.';
-    message.style.color = 'red';
-    message.textContent += '\nPlease choose a different username.';
-    message.textContent += '\n Accepted usernames would not include:.';
-    message.textContent += '\nCapitals, Only "_" and "." for special characters and between 1 - 32 letters!';
-    message.textContent += '\nDouble periods are not allowed EG: ".."';
-    quizLink.classList.remove('fade-in');
-    quizLink.classList.add('fade-out');
-}
+                    message.textContent = 'This username would not be accepted.\n';
+                    message.textContent += 'Please choose a different username.\n';
+                    message.textContent += 'Accepted usernames should not include:\n';
+                    message.textContent += 'Capitals. Only "_" and "." for special characters and between 1 - 32 characters!\n';
+                    message.textContent += 'Double periods are not allowed (e.g., "..").';
+                    message.style.color = 'red';
+                    quizLink.classList.remove('fade-in');
+                    quizLink.classList.add('fade-out');
                 }
             });
         });
     </script>
 </body>
 </html>
-
